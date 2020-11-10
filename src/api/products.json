@@ -1,0 +1,29 @@
+[{
+        "id": 1,
+        "name": "mobile",
+        "price": 200,
+        "image": "/img/mobile1.jpg",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident necessitatibus recusandae debitis omnis cupiditate similique nesciunt ullam at! Eligendi officiis quia commodi aut natus assumenda vel molestias, voluptate illo modi."
+    },
+    {
+        "id": 2,
+        "name": "ios",
+        "price": 250,
+        "image": "/img/mobile2.jpg",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident necessitatibus recusandae debitis omnis cupiditate similique nesciunt ullam at! Eligendi officiis quia commodi aut natus assumenda vel molestias, voluptate illo modi."
+    },
+    {
+        "id": 3,
+        "name": "watch",
+        "price": 7,
+        "image": "/img/watch.jpg",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident necessitatibus recusandae debitis omnis cupiditate similique nesciunt ullam at! Eligendi officiis quia commodi aut natus assumenda vel molestias, voluptate illo modi."
+    },
+    {
+        "id": 4,
+        "name": "shoe",
+        "price": 30,
+        "image": "/img/shoe2.jpg",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident necessitatibus recusandae debitis omnis cupiditate similique nesciunt ullam at! Eligendi officiis quia commodi aut natus assumenda vel molestias, voluptate illo modi."
+    }
+]

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default class Navbar extends Component {
     render() {
         return (
-            <ul className="nav nav-tabs">
-                <li role="presentation" className="active"><a href="/">Home</a></li>
-                <li role="presentation"><a href="/">Profile</a></li>
-                <li role="presentation"><a href="/">Messages</a></li>
-            </ul>
+            <nav className="navbar navbar-inverse">
+                <ul className="nav navbar-nav">
+                    <li role="presentation"><NavLink activeClassName="active" to="/">Home</NavLink></li>
+                    <li role="presentation"><NavLink activeClassName="active" to="/products">Products</NavLink></li>
+                    <li role="presentation"><NavLink activeClassName="active" to="/cart">Cart</NavLink></li>
+                </ul>
+            </nav>
         )
     }
 }
