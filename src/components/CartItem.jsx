@@ -13,8 +13,8 @@ export default function Product(props) {
             <div className="caption">
                 <h3>{props.name}</h3>
                 <p>Price {props.price}$</p>
-                <p>Quantity: 1</p>
-                <p>Totale: <span>{props.price}$</span></p>
+                <p>Quantity: {props.quantity}</p>
+                <p>Totale: <b>{props.quantity * props.price}$</b></p>
                 <br/>
                 <p>
                     <Link to={`#`} >

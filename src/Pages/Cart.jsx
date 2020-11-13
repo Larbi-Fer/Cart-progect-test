@@ -2,16 +2,9 @@ import React, { Component } from 'react'
 import CartItem from '../components/CartItem'
 import { Button } from '@material-ui/core';
 import * as ProductsApi from '../api/products'
+import { connect } from 'react-redux';
 
-export default class Cart extends Component {
-
-    state = {
-        products: []
-    }
-
-    componentDidMount() {
-        ProductsApi.getAll().then(data => this.setState({ products: data }))
-    }
+class Cart extends Component {
 
     render () {
         return (
@@ -19,19 +12,28 @@ export default class Cart extends Component {
                 <h1>Products</h1>
 
                 <div className="row">
-                    {this.state.products.map(product => {
+                    {this.props.products.map((item) => {
                         return (
-                            <div className={'col-4'}>
-                                <CartItem {...product} />
+                            <div className={'col-4'} key={item.product.id}>
+                                <CartItem {...item.product} quantity={item.quantity} />
                             </div>
                         )
                     })}
-                    <h3>
-                        Totale: 2500$
-                    </h3>
-                    <Button style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>play</h5></Button>
                 </div>
+                <h3>
+                    Totale: {this.props.total}$
+                </h3>
+                <Button style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>play</h5></Button>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        total: state.cart.reduce((total, item) => total + item.quantity * item.product.price, 0),
+        products: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(Cart)
