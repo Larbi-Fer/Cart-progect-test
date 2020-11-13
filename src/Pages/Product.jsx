@@ -62,7 +62,7 @@ class Product  extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addToCart: (productsInfo, quantity) => dispatch(addToCart(productsInfo, quantity))
+        addToCart: (productInfo, quantity) => dispatch(addToCart(productInfo, quantity))
     }
 }
 export default connect(null, mapDispatchToProps)(Product)

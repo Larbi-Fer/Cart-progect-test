@@ -2,10 +2,12 @@ import React from 'react'
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/DeleteRounded'
+import { connect } from 'react-redux';
 
+import { removeFromCart } from '../store/actions/actions'
 import '../main.css'
 
-export default function Product(props) {
+function Product(props) {
     return (
         <div className="col-sm-6 col-md-3">
             <div className="thumbnail">
@@ -17,15 +19,21 @@ export default function Product(props) {
                 <b><p>Totale: {props.quantity * props.price}$</p></b>
                 <br/>
                 <p>
-                    <Link to={`#`} >
-                        <Button spacing={3} variant='outlined' size="large" color="secondary" >
-                            <DeleteIcon />&nbsp;
-                            Delete
-                        </Button>
-                    </Link>
+                    <Button onClick={() => props.removeFromCart(props.index)} spacing={3} variant='outlined' size="large" color="secondary" >
+                        <DeleteIcon />&nbsp;
+                        Delete
+                    </Button>
                 </p>
             </div>
             </div>
         </div>
     )
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        removeFromCart: (index) => dispatch(removeFromCart(index))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Product)
