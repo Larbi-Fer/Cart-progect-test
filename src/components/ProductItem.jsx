@@ -1,4 +1,8 @@
 import React from 'react'
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom'
+
+import '../main.css'
 
 export default function Product(props) {
     return (
@@ -8,7 +12,13 @@ export default function Product(props) {
             <div class="caption">
                 <h3>{props.name}</h3>
                 <p>Price {props.price}$</p>
-                <p><a href={`/products/${props.id}`} class="btn btn-primary" role="button">Details</a></p>
+                <p>
+                    <Link to={`/products/${props.id}`} >
+                        <Button spacing={3} variant='outlined' size="large" color="primary" >
+                            Details
+                        </Button>
+                    </Link>
+                </p>
             </div>
             </div>
         </div>

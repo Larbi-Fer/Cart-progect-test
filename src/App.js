@@ -6,6 +6,8 @@ import Home from './Pages/Home';
 import Products from './Pages/Products';
 import Cart from './Pages/Cart';
 import Product from './Pages/Product';
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 class App extends Component {
   render() {
@@ -23,4 +25,8 @@ class App extends Component {
   }
 }
 
-export default App;
+function AppWithStore() {
+  return <Provider store={store}><App/></Provider>
+}
+
+export default AppWithStore;

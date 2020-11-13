@@ -1,10 +1,13 @@
 import React from 'react'
+import { Button, TextField, Grid } from '@material-ui/core'
+
 import { getById } from '../api/products'
 
 export default class Product  extends React.Component {
 
     state = {
         loading: true,
+        Quatity: 1,
         product: {}
     }
 
@@ -13,10 +16,17 @@ export default class Product  extends React.Component {
         getById(parseInt(id)).then(product => this.setState({ product, loading: false }))
     }
 
+    handeleQuantity = (e) => {
+        const value = e.target.value
+        if (value < 1) return
+        this.setState({ Quatity: value })
+    }
+
     render() {
         if ( this.state.loading )
             return 'loading ..'
         const product = this.state.product
+        const Quatity = this.state.Quatity
         return (
             <div>
                 <div className="row">
@@ -29,9 +39,13 @@ export default class Product  extends React.Component {
                         <p>{product.description}</p>
                         <br/><br/>
 
-                        <input defaultValue="1" min="1" className="" type="number"/>
+                        <input value={Quatity} onChange={this.handeleQuantity} min="1" className="form-control" type="number"/>
+                        {/*<br/>
+                        <p>Total: <span style={{fontWeight: "bold"}}>{Quatity * product.price}$</span></p>
+                        <button className="btn btn-primary">Add to Cart</button> */}
+                        {/* <TextField fontSize="18px" name="creator" variant="outlined" size="large" label="Quatity" fullWidth /> */}
                         <br/><br/>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <Button variant='contained' color='primary' size="large" >Add to Cart</Button>
 
                     </div>
                 </div>
