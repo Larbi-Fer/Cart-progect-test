@@ -14,7 +14,7 @@ export default function Product(props) {
                 <h3>{props.name}</h3>
                 <p>Price {props.price}$</p>
                 <p>Quantity: {props.quantity}</p>
-                <p>Totale: <b>{props.quantity * props.price}$</b></p>
+                <b><p>Totale: {props.quantity * props.price}$</p></b>
                 <br/>
                 <p>
                     <Link to={`#`} >

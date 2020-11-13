@@ -21,7 +21,7 @@ class Cart extends Component {
                     })}
                 </div>
                 <h3>
-                    Totale: {this.props.total}$
+                    Totale: <b>{this.props.total}$</b>
                 </h3>
                 <Button style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>play</h5></Button>
             </div>

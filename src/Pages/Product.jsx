@@ -2,8 +2,10 @@ import React from 'react'
 import { Button, TextField, Grid } from '@material-ui/core'
 
 import { getById } from '../api/products'
+import { addToCart } from '../store/actions/actions'
+import { connect } from 'react-redux'
 
-export default class Product  extends React.Component {
+class Product  extends React.Component {
 
     state = {
         loading: true,
@@ -20,6 +22,10 @@ export default class Product  extends React.Component {
         const value = e.target.value
         if (value < 1) return
         this.setState({ Quatity: value })
+    }
+
+    addToCart = product => {
+        this.props.addToCart(product, this.state.Quatity)
     }
 
     render() {
@@ -45,7 +51,7 @@ export default class Product  extends React.Component {
                         <button className="btn btn-primary">Add to Cart</button> */}
                         {/* <TextField fontSize="18px" name="creator" variant="outlined" size="large" label="Quatity" fullWidth /> */}
                         <br/><br/>
-                        <Button variant='contained' color='primary' size="large" >Add to Cart</Button>
+                        <Button variant='contained' color='primary' size="large" onClick={() => this.addToCart(product)} >Add to Cart</Button>
 
                     </div>
                 </div>
@@ -53,3 +59,10 @@ export default class Product  extends React.Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToCart: (productsInfo, quantity) => dispatch(addToCart(productsInfo, quantity))
+    }
+}
+export default connect(null, mapDispatchToProps)(Product)
