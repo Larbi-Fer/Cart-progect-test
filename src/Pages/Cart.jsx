@@ -3,8 +3,15 @@ import CartItem from '../components/CartItem'
 import { Button } from '@material-ui/core';
 // import * as ProductsApi from '../api/products'
 import { connect } from 'react-redux';
+import { clearCart } from '../store/actions/actions';
 
 class Cart extends Component {
+
+    placeOrder = () => {
+        // send the request to the server
+        // clear cart
+        this.props.clearCart()
+    }
 
     render () {
         return (
@@ -23,7 +30,7 @@ class Cart extends Component {
                 <h3>
                     Totale: <b>{this.props.total}$</b>
                 </h3>
-                <Button style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>Place order</h5></Button>
+                <Button onClick={this.placeOrder} style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>Place order</h5></Button>
             </div>
         )
     }
@@ -36,4 +43,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps = dispatch => {
+    return {
+        clearCart: () => dispatch(clearCart())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
