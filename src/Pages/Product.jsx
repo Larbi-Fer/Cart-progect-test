@@ -25,7 +25,7 @@ class Product  extends React.Component {
     }
 
     addToCart = product => {
-        this.props.addToCart(product, this.state.Quatity)
+        this.props.addToCart(product, parseInt(this.state.Quatity))
     }
 
     render() {
