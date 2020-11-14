@@ -18,19 +18,23 @@ class Cart extends Component {
             <div>
                 <h1>Products</h1>
 
-                <div className="row">
-                    {this.props.products.map((item, index) => {
-                        return (
-                            <div className={'col-4'} key={item.product.id}>
-                                <CartItem {...item.product} quantity={item.quantity} index={index} />
-                            </div>
-                        )
-                    })}
-                </div>
-                <h3>
-                    Totale: <b>{this.props.total}$</b>
-                </h3>
-                <Button onClick={this.placeOrder} style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>Place order</h5></Button>
+                {this.props.products.length === 0 ? <div style={{textAlign: 'center'}}><h2>No Products in cart</h2></div> : (
+                    <div>
+                        <div className="row">
+                            {this.props.products.map((item, index) => {
+                                return (
+                                    <div className={'col-4'} key={item.product.id}>
+                                        <CartItem {...item.product} quantity={item.quantity} index={index} />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <h3>
+                            Totale: <b>{this.props.total}$</b>
+                        </h3>
+                        <Button onClick={this.placeOrder} style={{margin: "15px"}} color="primary" variant="contained" size="medium" fullWidth><h5>Place order</h5></Button>
+                    </div>
+                )}
             </div>
         )
     }

@@ -8,12 +8,21 @@ export function addToCart(productInfo, quantity) {
     }
 }
 
-export function removeFromCart(index) {
+export function createRemoveFromCartAction(index) {
     return {
         type: REMOVE_FROM_CART,
         index
     }
 }
+
+/* export function removeFromCart(index) {
+    return async(dispatch) => {
+        await dispatch(createRemoveFromCartAction(index))
+    }
+} */
+// or
+export const removeFromCart = index => async dispatch => await dispatch(createRemoveFromCartAction(index))
+
 
 export function clearCart() {
     return {
