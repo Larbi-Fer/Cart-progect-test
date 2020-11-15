@@ -1,4 +1,4 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import cartReduer from './reducers'
 import thunk from 'redux-thunk';
 import throttle from 'lodash.throttle'
@@ -20,8 +20,11 @@ function saveState(state) {
     localStorage.setItem('cart',JSON.stringify(state) )
 }
 
+const appReducers = combineReducers({
+    cart: cartReduer
+})
 
-const store = createStore(cartReduer, localState(), compose(
+const store = createStore(appReducers, localState(), compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ) )
